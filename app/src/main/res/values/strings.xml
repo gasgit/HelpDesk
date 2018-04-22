@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">HelpDesk</string>
+
+
+
+    <string-array name="support_array">
+        <item>Software</item>
+        <item>Hardware</item>
+        <item>Network</item>
+        <item>Printer</item>
+        <item>Password</item>
+        <item>Account</item>
+    </string-array>
+</resources>
