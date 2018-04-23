@@ -109,14 +109,28 @@
             android:textColor="#FFFF"
             android:textColorHint="#C0C0C0" />
 
-        <Spinner
+        <!--<Spinner-->
 
-            android:id="@+id/support_spinner"
+            <!--android:id="@+id/support_spinner"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:entries="@array/support_array" />-->
+
+        <AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/et_support"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:entries="@array/support_array" />
+            android:backgroundTint="#00FFFF"
+            android:breakStrategy="balanced"
+            android:fitsSystemWindows="true"
+            android:hint="Support Required"
+            android:textColorHint="#C0C0C0"
+            android:inputType="text"
+            android:textColor="#FFFF"/>
 
 
         <EditText
@@ -149,6 +163,17 @@
             android:paddingLeft="70dp"
             android:paddingRight="70dp"
             android:text="Submit"
+            android:textColor="#fff" />
+
+        <Button
+            android:id="@+id/btn_consume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:elevation="4dp"
+            android:paddingLeft="70dp"
+            android:paddingRight="70dp"
+            android:text="Consume"
             android:textColor="#fff" />
 
     </LinearLayout>

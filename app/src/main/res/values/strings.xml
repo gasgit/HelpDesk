@@ -5,10 +5,29 @@
 
     <string-array name="support_array">
         <item>Software</item>
+        <item>Software Update</item>
+        <item>Software Install</item>
+        <item>Software Removal</item>
+
         <item>Hardware</item>
-        <item>Network</item>
+        <item>Network Down</item>
+        <item>Network Slow</item>
+        <item>Network WiFi</item>
+
         <item>Printer</item>
+        <item>Printer Offline</item>
+        <item>Printer Toner</item>
+        <item>Printer Blah</item>
+        <item>Printer Boo</item>
+        <item>Printer Bss</item>
+
         <item>Password</item>
+        <item>Password Reset</item>
+        <item>Password Request</item>
+
         <item>Account</item>
+
     </string-array>
+
+
 </resources>
