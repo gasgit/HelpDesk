@@ -20,7 +20,6 @@
         <item>Printer Blah</item>
         <item>Printer Boo</item>
         <item>Printer Bss</item>
-
         <item>Password</item>
         <item>Password Reset</item>
         <item>Password Request</item>
@@ -28,6 +27,20 @@
         <item>Account</item>
 
     </string-array>
+
+
+    <string-array name="centers_array">
+        <item>Athenry Head Quarters</item>
+        <item>Galway Technical Institute</item>
+        <item>Galway Community College</item>
+        <item>Mervue Trainning Centre</item>
+        <item>VTOS Galway</item>
+        <item>VTOS Tuam</item>
+        <item>VTOS Loughrea</item>
+        <item>VTOS Galway</item>
+    </string-array>
+
+
 
 
 </resources>

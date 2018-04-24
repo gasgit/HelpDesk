@@ -1,17 +1,22 @@
 package ie.gasgit.helpdesk;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -19,7 +24,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
 
 
 public class MainActivity extends AppCompatActivity {
@@ -30,18 +34,15 @@ public class MainActivity extends AppCompatActivity {
     private EditText et_phone;
     private EditText et_emp;
     private EditText et_details;
-    private EditText et_center;
-    private Spinner support_type;
     private Button submit;
     private Button consume;
+
+    // display
     private AutoCompleteTextView et_support;
+    private ArrayAdapter<String> supportAdapter;
 
-    private Ticket ticket;
-
-    private  AutoCompleteTextView textView;
-    private  ArrayAdapter<String> adapter;
-
-
+    private AutoCompleteTextView et_center;
+    private ArrayAdapter<String> centerAdapter;
 
 
     @Override
@@ -49,42 +50,41 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        //et_phone.setText(fillNumber());
+
         et_name = findViewById(R.id.et_name);
         et_email = findViewById(R.id.et_email);
+
         et_subject = findViewById(R.id.et_subject);
-        et_center = findViewById(R.id.et_center);
         et_emp = findViewById(R.id.et_emp);
         et_phone = findViewById(R.id.et_phone);
         et_details = findViewById(R.id.et_details);
 
+        et_center = findViewById(R.id.et_center);
+        String[] centers = getResources().getStringArray(R.array.centers_array);
+        centerAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, centers);
+        et_center.setAdapter(centerAdapter);
+
         et_support = findViewById(R.id.et_support);
-        // Get the string array
         String[] supports = getResources().getStringArray(R.array.support_array);
-        // Create the adapter and set it to the AutoCompleteTextView
-        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, supports);
-        et_support.setAdapter(adapter);
-
-
-
-
-
+        supportAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, supports);
+        et_support.setAdapter(supportAdapter);
 
         buttonListener();
 
 
     }
 
-    public void buttonListener(){
+    public void buttonListener() {
 
         submit = findViewById(R.id.btn_submit);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d(et_name.getText().toString(), "onClick: ");
-
                 sendPost();
             }
         });
-
 
 
         consume = findViewById(R.id.btn_consume);
@@ -95,6 +95,34 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
+    // TODO
+    // break up code/ get detail/ http request/ db helper
+    // create connection file use git ignore
+    // add toast/ dialog message to verify post
+    // add attachment button and display field
+    // create sqlite db to save tickets
+    // populate arrays
+    //
+
+
+//    public String fillNumber() {
+//        TelephonyManager tMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_NUMBERS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+//            // TODO: Consider calling
+//            //    ActivityCompat#requestPermissions
+//            // here to request the missing permissions, and then overriding
+//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//            //                                          int[] grantResults)
+//            // to handle the case where the user grants the permission. See the documentation
+//            // for ActivityCompat#requestPermissions for more details.
+//            //return TODO;
+//        }
+//        String phoneNumber = tMgr.getLine1Number();
+//        return phoneNumber;
+//    }
+
     public void sendPost() {
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -162,6 +190,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     URL url = new URL("http://192.168.0.164:5000/api");
+
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setDoOutput(true);
                     conn.setRequestMethod("POST");

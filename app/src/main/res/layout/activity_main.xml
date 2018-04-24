@@ -33,12 +33,14 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#00FFFF"
             android:hint="Name"
-            android:inputType="textPersonName"
+            android:inputType="textCapWords"
+
 
             android:textColor="#FFFF"
             android:textColorHint="#C0C0C0" />
 
         <EditText
+
             android:id="@+id/et_email"
 
             android:layout_width="fill_parent"
@@ -76,13 +78,14 @@
             android:layout_marginTop="10dp"
             android:backgroundTint="#00FFFF"
             android:hint="Subject"
+            android:inputType="textCapWords"
 
-            android:inputType="text"
+
             android:textColor="#FFFF"
             android:textColorHint="#C0C0C0" />
 
 
-        <EditText
+        <AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/et_center"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -105,18 +108,10 @@
             android:layout_marginTop="10dp"
             android:backgroundTint="#00FFFF"
             android:hint="EmpID"
-            android:inputType="text"
+            android:inputType="textCapCharacters"
             android:textColor="#FFFF"
             android:textColorHint="#C0C0C0" />
 
-        <!--<Spinner-->
-
-            <!--android:id="@+id/support_spinner"-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--android:entries="@array/support_array" />-->
 
         <AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/et_support"
@@ -129,12 +124,14 @@
             android:fitsSystemWindows="true"
             android:hint="Support Required"
             android:textColorHint="#C0C0C0"
-            android:inputType="text"
+            android:inputType="textCapWords"
+
             android:textColor="#FFFF"/>
 
 
         <EditText
             android:id="@+id/et_details"
+            android:inputType="textMultiLine|textCapSentences"
 
             android:layout_width="fill_parent"
             android:layout_height="150dp"
@@ -147,7 +144,6 @@
 
 
             android:hint="Your Message"
-            android:inputType="textMultiLine"
             android:padding="5dp"
             android:singleLine="false"
             android:textColor="#FFFF"
