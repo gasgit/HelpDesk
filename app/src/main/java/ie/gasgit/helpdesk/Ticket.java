@@ -1,7 +1,11 @@
 package ie.gasgit.helpdesk;
 
 /**
- * Created by ubuntu on 19/04/2018.
+ * Created on ubuntu on 19/04/2018.
+ * glen
+ *
+ * create POJO ticket object
+ *
  */
 
 public class Ticket {
@@ -24,6 +28,10 @@ public class Ticket {
         this.emp_id = emp_id;
         this.support_type = support_type;
         this.detailed_message = detailed_message;
+    }
+
+    public Ticket() {
+
     }
 
     public String getName() {
@@ -88,5 +96,20 @@ public class Ticket {
 
     public void setDetailed_message(String detailed_message) {
         this.detailed_message = detailed_message;
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }
